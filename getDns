@@ -1,0 +1,4 @@
+#! /bin/bash
+
+#$1 instance id
+aws ec2 describe-instances --instance-ids $1 | grep -i PublicDnsName | head -1| awk '{print $2}' | sed 's/"//g' | sed 's/,//'
